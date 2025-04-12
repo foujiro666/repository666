@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автоателье У Михалыча - Вход/Регистрация</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #111;
+            color: #fff;
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+
+        .form-container {
+            width: 380px;
+            background: #222;
+            box-shadow: 0px 5px 15px rgba(255, 77, 0, 0.5);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            color: #ff4d00;
+            margin-bottom: 20px;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .input {
+            border-radius: 10px;
+            border: 2px solid #ff4d00;
+            padding: 12px;
+            width: 100%;
+            background: #333;
+            color: #fff;
+        }
+
+        .form-btn {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+            background: #ff4d00;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+            .form-btn:hover {
+                background: #ff8000;
+            }
+
+        .sign-up-label {
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        .sign-up-link {
+            color: #ff4d00;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <p class="title" id="formTitle">Добро пожаловать в автоателье У Михалыча</p>
+        <form class="form" id="authForm">
+            <input type="email" class="input" placeholder="Ваш Email" required>
+            <input type="password" class="input" placeholder="Пароль" required>
+            <button type="button" class="form-btn" onclick="submitForm()">Войти</button>
+        </form>
+        <p class="sign-up-label">
+            Нет аккаунта? <span class="sign-up-link" onclick="switchToRegister()">Зарегистрироваться</span>
+        </p>
+    </div>
+
+    <script>
+        let isRegistering = false;
+
+        function switchToRegister() {
+            isRegistering = true;
+            document.getElementById("formTitle").innerText = "Регистрация в автоателье У Михалыча";
+            document.querySelector(".form-btn").innerText = "Зарегистрироваться";
+            document.querySelector(".sign-up-label").style.display = "none";
+
+            // Добавляем поле для имени
+            let nameField = document.createElement("input");
+            nameField.type = "text";
+            nameField.className = "input";
+            nameField.placeholder = "Ваше имя";
+            document.getElementById("authForm").prepend(nameField);
+        }
+
+        function submitForm() {
+            if (isRegistering) {
+                alert("Регистрация успешно завершена! Теперь можете войти.");
+                location.reload(); // Сброс формы
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+</html>
